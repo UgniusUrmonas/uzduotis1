@@ -6,16 +6,16 @@
 
     <form method="get" >
         <label for="title">Enter Movie Name:</label>
-        <input type="text" id="title" name="title" placeholder="Enter title" value="<?=empty($_GET['title']) ? htmlspecialchars('') : trim(htmlspecialchars($_GET['title'])); ?>"> 
+        <input type="text" id="title" maxlength="100" name="title" placeholder="Enter title" value="<?=empty($_GET['title']) ? htmlspecialchars('') : trim(htmlspecialchars($_GET['title'])); ?>"> 
 
         <label for="running_time">Filter by Running Time:</label>
         <input type="number" id="running_time" name="running_time" placeholder="In minutes" value="<?= empty($_GET['running_time']) ? htmlspecialchars('') : trim(htmlspecialchars($_GET['running_time'])); ?>">
-        <select id="comparison" name="comparison">
-            <option value="=">=</option>
-            <option value="<"><</option>
-            <option value=">">></option>
-            <option value="<="><=</option>
-            <option value=">=">>=</option>
+        <select id="comparison" name="comparison" value="<?= empty($_GET['comparison']) ?  '' : $_GET['comparison']; ?>">
+            <option <?= $_GET['comparison'] == '='? "selected" : ''?> value="=">=</option>
+            <option <?= $_GET['comparison'] == '<'? "selected" : ''?> value="<"><</option>
+            <option <?= $_GET['comparison'] == '>'? "selected" : ''?> value=">">></option>
+            <option <?= $_GET['comparison'] == '<='? "selected" : ''?> value="<="><=</option>
+            <option <?= $_GET['comparison'] == '>='? "selected" : ''?> value=">=">>=</option>
         </select>
         <button type="submit">Search</button>
     </form>
